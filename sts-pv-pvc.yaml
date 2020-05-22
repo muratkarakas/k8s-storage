@@ -27,13 +27,16 @@ spec:
       storage: 2Gi
   storageClassName: mypvsc
 ---
-apiVersion: "apps/v1beta1"
+apiVersion: "apps/v1"
 kind: StatefulSet
 metadata:
   name: nginx
 spec:
   serviceName: nginx
   replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
